@@ -81,7 +81,7 @@ Tabs.Main0:AddButton({
 ------------------------------------------------
 -- TAB 2: Ví dụ thêm script
 ------------------------------------------------
-Tabs.Main1:AddButton({
+Tabs.Main2:AddButton({
 	Title = "FunkyFriday",                             -- 👈 tên nút hiển thị
 	Description = "script full chức năng",-- 👈 mô tả
 	Callback = function()
@@ -97,7 +97,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Fire-
 	end
 })
 
-Tabs.Main2:AddButton({
+Tabs.Main3:AddButton({
 	Title = "SpeedHub",                             -- 👈 tên nút hiển thị
 	Description = "script full chức năng",-- 👈 mô tả
 	Callback = function()
@@ -109,7 +109,7 @@ Tabs.Main2:AddButton({
 	end
 })
 
-Tabs.Main3:AddButton({
+Tabs.Main4:AddButton({
 	Title = "AimbotScript",                             -- 👈 tên nút hiển thị
 	Description = "Aimbot mọi game",-- 👈 mô tả
 	Callback = function()
@@ -121,7 +121,7 @@ Tabs.Main3:AddButton({
 	end
 })
 
-Tabs.Main4:AddButton({
+Tabs.Main5:AddButton({
 	Title = "palsm tech",                             -- 👈 tên nút hiển thị
 	Description = "Aimbot,esp,walkSpeed",-- 👈 mô tả
 	Callback = function()
@@ -133,7 +133,7 @@ Tabs.Main4:AddButton({
 	end
 })
 
-Tabs.Main5:AddButton({
+Tabs.Main6:AddButton({
 	Title = "QuantumHub",                             -- 👈 tên nút hiển thị
 	Description = "script full chức năng,farm kẹo",-- 👈 mô tả
 	Callback = function()
