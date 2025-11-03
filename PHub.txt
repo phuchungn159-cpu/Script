@@ -151,6 +151,7 @@ local Tabs = {
 	Main8 = Window:AddTab({ Title = "TBS" }), -- 👈 đổi tên tab 9
 	Main9 = Window:AddTab({ Title = "LumBerTC2" }), -- 👈 đổi tên tab 10
 	Main10 = Window:AddTab({ Title = "Raise animal" }), -- 👈 đổi tên tab 11
+	Main11 = Window:AddTab({ Title = "TBS all script" }), -- 👈 đổi tên tab 12
 }
 
 ------------------------------------------------
@@ -305,5 +306,17 @@ Tabs.Main10:AddButton({
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/stormskmonkey/JinkX/main/Loader.lua"))()
+	end
+})
+
+Tabs.Main11:AddButton({
+	Title = "MinhNhatHub",                             -- 👈 tên nút hiển thị
+	Description = "all script tbs",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/minhnhatdepzai8-cloud/TONG-HOP-SCRIPT/refs/heads/main/TSB"))()
 	end
 })
