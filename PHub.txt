@@ -37,18 +37,18 @@ local Window = Fluent:CreateWindow({
 	TabWidth = 157,
 	Size = UDim2.fromOffset(450, 300),
 	Acrylic = true,
-	Theme = "Aqua",                   -- 👈 đổi màu chủ đạo: Amethyst, Dark, Aqua, Light,...
+	Theme = "Amethyst",                   -- 👈 đổi màu chủ đạo: Amethyst, Dark, Aqua, Light,...
 	MinimizeKey = Enum.KeyCode.End
 })
 
 -- 📑 Các tab (mục chính)
 local Tabs = {
-	Main0 = Window:AddTab({ Title = "FunkyFriday" }),  -- 👈 đổi tên tab 1
-	Main1 = Window:AddTab({ Title = "grow a gaden" }),  -- 👈 đổi tên tab 2
-	Main2 = Window:AddTab({ Title = "aimbot" }),     -- 👈 đổi tên tab 3
-	Main3 = Window:AddTab({ Title = "Dahood" }),        -- 👈 đổi tên tab 4
-	Main4 = Window:AddTab({ Title = "blox fruit" }),    -- 👈 đổi tên tab 5
-	Main5 = Window:AddTab({ Title = "InfiniteYield" }) -- 👈 đổi tên tab 6
+	Main0 = Window:AddTab({ Title = "tiktok profile" }),  -- 👈 đổi tên tab 1
+	Main1 = Window:AddTab({ Title = "FunkyFriday" }),  -- 👈 đổi tên tab 2
+	Main2 = Window:AddTab({ Title = "Grow a Garden" }),     -- 👈 đổi tên tab 3
+	Main3 = Window:AddTab({ Title = "aimbot" }),        -- 👈 đổi tên tab 4
+	Main4 = Window:AddTab({ Title = "dahood" }),    -- 👈 đổi tên tab 5
+	Main5 = Window:AddTab({ Title = "BloxFruit" }) -- 👈 đổi tên tab 6
 }
 
 ------------------------------------------------
@@ -81,7 +81,7 @@ Tabs.Main0:AddButton({
 ------------------------------------------------
 -- TAB 2: Ví dụ thêm script
 ------------------------------------------------
-Tabs.Main1:AddButton({
+Tabs.Main2:AddButton({
 	Title = "FunkyFriday",                             -- 👈 tên nút hiển thị
 	Description = "script full chức năng",-- 👈 mô tả
 	Callback = function()
@@ -97,7 +97,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Fire-
 	end
 })
 
-Tabs.Main2:AddButton({
+Tabs.Main3:AddButton({
 	Title = "SpeedHub",                             -- 👈 tên nút hiển thị
 	Description = "script full chức năng",-- 👈 mô tả
 	Callback = function()
@@ -109,7 +109,7 @@ Tabs.Main2:AddButton({
 	end
 })
 
-Tabs.Main3:AddButton({
+Tabs.Main4:AddButton({
 	Title = "AimbotScript",                             -- 👈 tên nút hiển thị
 	Description = "Aimbot mọi game",-- 👈 mô tả
 	Callback = function()
@@ -121,7 +121,7 @@ Tabs.Main3:AddButton({
 	end
 })
 
-Tabs.Main4:AddButton({
+Tabs.Main5:AddButton({
 	Title = "palsm tech",                             -- 👈 tên nút hiển thị
 	Description = "Aimbot,esp,walkSpeed",-- 👈 mô tả
 	Callback = function()
@@ -133,7 +133,7 @@ Tabs.Main4:AddButton({
 	end
 })
 
-Tabs.Main5:AddButton({
+Tabs.Main6:AddButton({
 	Title = "QuantumHub",                             -- 👈 tên nút hiển thị
 	Description = "script full chức năng,farm kẹo",-- 👈 mô tả
 	Callback = function()
@@ -142,17 +142,5 @@ Tabs.Main5:AddButton({
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))()
-	end
-})
-
-Tabs.Main6:AddButton({
-	Title = "InfiniteYield",                             -- 👈 tên nút hiển thị
-	Description = "script full chức năng",-- 👈 mô tả
-	Callback = function()
-		local Settings = {
-			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
-			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
-		}
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 	end
 })
