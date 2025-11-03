@@ -1,6 +1,6 @@
 -- 1️⃣ KHAI BÁO KEY & LINK GET KEY
 local key = "PHubScriptTongHop" -- Key bạn đặt
-local keyLink = "https://link4sub.com/G7VB" -- Link khi ấn "Get Key"
+local keyLink = "https://www.tiktok.com/@riz_god_2?_r=1&_t=ZS-915qpmIi0ZM" -- Link khi ấn "Get Key"
 
 -- 2️⃣ GIAO DIỆN NHẬP KEY
 local CoreGui = game:GetService("CoreGui")
@@ -39,7 +39,7 @@ CloseButton.MouseButton1Click:Connect(function()
 	ScreenGui:Destroy() -- ấn X sẽ tắt giao diện
 end)
 TextBox.Parent = Frame
-TextBox.PlaceholderText = "Nhập key tại đây 🍎"
+TextBox.PlaceholderText = "enter key here 🔥"
 TextBox.Text = ""
 TextBox.Size = UDim2.new(0.9, 0, 0, 35)
 TextBox.Position = UDim2.new(0.05, 0, 0.25, 0)
@@ -48,14 +48,14 @@ TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 UICorner:Clone().Parent = TextBox
 
 CheckButton.Parent = Frame
-CheckButton.Text = "Kiểm tra key ✅"
+CheckButton.Text = "Check Key ✅"
 CheckButton.Size = UDim2.new(0.4, 0, 0, 30)
 CheckButton.Position = UDim2.new(0.05, 0, 0.65, 0)
 CheckButton.BackgroundColor3 = Color3.fromRGB(80, 170, 80)
 UICorner:Clone().Parent = CheckButton
 
 GetKeyButton.Parent = Frame
-GetKeyButton.Text = "Lấy key 🔑"
+GetKeyButton.Text = "Get Key 🔑"
 GetKeyButton.Size = UDim2.new(0.4, 0, 0, 30)
 GetKeyButton.Position = UDim2.new(0.55, 0, 0.65, 0)
 GetKeyButton.BackgroundColor3 = Color3.fromRGB(100, 100, 255)
@@ -65,7 +65,7 @@ GetKeyButton.MouseButton1Click:Connect(function()
 	setclipboard(keyLink)
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Đã copy link 🔗";
-		Text = "Dán lên trình duyệt để lấy key nhé!";
+		Text = "key ở tiểu sử tik tok của mình nha!";
 		Duration = 4;
 	})
 end)
@@ -76,13 +76,13 @@ CheckButton.MouseButton1Click:Connect(function()
 		keyOk = true
 		ScreenGui:Destroy()
 		game.StarterGui:SetCore("SendNotification", {
-			Title = "Thành công 🎉";
+			Title = "cảm ơn ông cháu 🎉";
 			Text = "Key đúng! Script sẽ khởi chạy.";
 			Duration = 3;
 		})
 	else
 		game.StarterGui:SetCore("SendNotification", {
-			Title = "Sai key ❌";
+			Title = "Sai key rồi cụ❌";
 			Text = "Hãy ấn nút 'Lấy key' để lấy key mới.";
 			Duration = 3;
 		})
@@ -129,7 +129,7 @@ repeat wait() until game:IsLoaded()
 
 -- 🪟 Cửa sổ chính
 local Window = Fluent:CreateWindow({
-	Title = "PornHubBeta =}",         -- 👈 đổi thành tên script của bạn
+	Title = "PornHubBeta 🥶",         -- 👈 đổi thành tên script của bạn
 	SubTitle = "by Hung",              -- 👈 đổi mô tả phụ
 	TabWidth = 157,
 	Size = UDim2.fromOffset(450, 300),
@@ -148,10 +148,14 @@ local Tabs = {
 	Main5 = Window:AddTab({ Title = "BloxFruit" }), -- 👈 đổi tên tab 6
 	Main6 = Window:AddTab({ Title = "kinglegacy" }), -- 👈 đổi tên tab 7
 	Main7 = Window:AddTab({ Title = "Plant vs Brainrot" }), -- 👈 đổi tên tab 8
-	Main8 = Window:AddTab({ Title = "TBS" }), -- 👈 đổi tên tab 9
+	Main8 = Window:AddTab({ Title = "TSB" }), -- 👈 đổi tên tab 9
 	Main9 = Window:AddTab({ Title = "LumBerTC2" }), -- 👈 đổi tên tab 10
 	Main10 = Window:AddTab({ Title = "Raise animal" }), -- 👈 đổi tên tab 11
-	Main11 = Window:AddTab({ Title = "TBS all script" }), -- 👈 đổi tên tab 12
+	Main11 = Window:AddTab({ Title = "Tsb all script" }), -- 👈 đổi tên tab 12
+	Main12 = Window:AddTab({ Title = "infinite Yield" }), -- 👈 đổi tên tab 13
+	Main13 = Window:AddTab({ Title = "MM2Script" }), -- 👈 đổi tên tab 14
+	Main14 = Window:AddTab({ Title = "inkgame" }), -- 👈 đổi tên tab 15
+	Main15 = Window:AddTab({ Title = "shinobi life" }), -- 👈 đổi tên tab 16
 }
 
 ------------------------------------------------
@@ -274,7 +278,7 @@ Tabs.Main7:AddButton({
 })
 
 Tabs.Main8:AddButton({
-	Title = "TBSscript",                             -- 👈 tên nút hiển thị
+	Title = "Tsbscript",                             -- 👈 tên nút hiển thị
 	Description = "auto combo maru",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
@@ -318,5 +322,53 @@ Tabs.Main11:AddButton({
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/minhnhatdepzai8-cloud/TONG-HOP-SCRIPT/refs/heads/main/TSB"))()
+	end
+})
+
+Tabs.Main12:AddButton({
+	Title = "infinite yield",                             -- 👈 tên nút hiển thị
+	Description = "ex: fly,noclip,ws,bang,jerk,sit...",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+	end
+})
+
+Tabs.Main13:AddButton({
+	Title = "OverDriveHub",                             -- 👈 tên nút hiển thị
+	Description = "auto kill muder,kill aura,esp sheriff",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://api.overdrivehub.xyz/v1/auth"))()
+	end
+})
+
+Tabs.Main14:AddButton({
+	Title = "inkgamescript",                             -- 👈 tên nút hiển thị
+	Description = "auto play",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/omaromar242/Ink-Game-omar/refs/heads/main/.gitignore"))()
+	end
+})
+
+Tabs.Main15:AddButton({
+	Title = "solixhub",                             -- 👈 tên nút hiển thị
+	Description = "auto farm",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/refs/heads/main/solix%20new%20keyui.lua"))() 
 	end
 })
