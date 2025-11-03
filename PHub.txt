@@ -145,12 +145,12 @@ local Tabs = {
 	Main2 = Window:AddTab({ Title = "Grow a Garden" }),     -- 👈 đổi tên tab 3
 	Main3 = Window:AddTab({ Title = "aimbot" }),        -- 👈 đổi tên tab 4
 	Main4 = Window:AddTab({ Title = "dahood" }),    -- 👈 đổi tên tab 5
-	Main5 = Window:AddTab({ Title = "BloxFruit" }) -- 👈 đổi tên tab 6
-	Main6 = Window:AddTab({ Title = "kinglegacy" }) -- 👈 đổi tên tab 7
-	Main7 = Window:AddTab({ Title = "Plant vs Brainrot" }) -- 👈 đổi tên tab 8
-	Main8 = Window:AddTab({ Title = "TBS" }) -- 👈 đổi tên tab 9
-	Main9 = Window:AddTab({ Title = "LumBerTC2" }) -- 👈 đổi tên tab 10
-	Main10 = Window:AddTab({ Title = "Raise animal" }) -- 👈 đổi tên tab 11
+	Main5 = Window:AddTab({ Title = "BloxFruit" }), -- 👈 đổi tên tab 6
+	Main6 = Window:AddTab({ Title = "kinglegacy" }), -- 👈 đổi tên tab 7
+	Main7 = Window:AddTab({ Title = "Plant vs Brainrot" }), -- 👈 đổi tên tab 8
+	Main8 = Window:AddTab({ Title = "TBS" }), -- 👈 đổi tên tab 9
+	Main9 = Window:AddTab({ Title = "LumBerTC2" }), -- 👈 đổi tên tab 10
+	Main10 = Window:AddTab({ Title = "Raise animal" }), -- 👈 đổi tên tab 11
 }
 
 ------------------------------------------------
