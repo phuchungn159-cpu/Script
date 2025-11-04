@@ -1,5 +1,5 @@
 -- ===================================================================
--- ==           OREOHUB V1.1.0 - TỐI ƯU CHO MOBILE (RAYFIELD)      ==
+-- ==           OREOHUB V1.1.0 - ĐIỀU CHỈNH NÚT ẢO LUÔN HIỆN        ==
 -- ===================================================================
 
 -- 1. TẢI THƯ VIỆN RAYFIELD
@@ -9,6 +9,9 @@ local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 local KEY_LINK = "https://anotepad.com/notes/63wig4bi"
 local KEY_VALUE = "OreoHubAllScript"
 local UserInputService = game:GetService("UserInputService")
+
+-- Chúng ta sẽ không phụ thuộc vào việc phát hiện Mobile nữa.
+-- Thay vào đó, chúng ta sẽ tạo nút ảo MẶC ĐỊNH và chỉ dùng phím nóng cho PC.
 local IsMobile = UserInputService.TouchEnabled and not UserInputService.MouseEnabled
 
 -- ===================================================================
@@ -22,7 +25,7 @@ local Window = Rayfield:CreateWindow({
         Enabled = true,
         FileName = "OreoHubConfig"
     },
-    -- Chỉ sử dụng phím End nếu không phải là Mobile
+    -- Chỉ dùng phím nóng (End) cho PC. Mobile dùng nút ảo.
     ToggleKey = IsMobile and nil or Enum.KeyCode.End, 
 
     -------------------------------------------------------------------
@@ -54,33 +57,34 @@ local Window = Rayfield:CreateWindow({
 })
 
 -- ===================================================================
--- 3. NÚT BẬT/TẮT CHO THIẾT BỊ DI ĐỘNG
+-- 3. ĐẢM BẢO TẠO NÚT BẬT/TẮT ẢO CHO MỌI TRƯỜNG HỢP MOBILE/EXECUTER
 -- ===================================================================
 
+-- Tạo nút ảo (Phím ảo) trong CoreGui
+local CoreGui = game:GetService("CoreGui")
+local ToggleButton = Instance.new("TextButton")
+
+ToggleButton.Name = "OreoHub_Toggle_Mobile"
+ToggleButton.Text = "Oreo"  -- Tên hiển thị của nút
+ToggleButton.Size = UDim2.new(0, 80, 0, 40)
+ToggleButton.Position = UDim2.new(0.01, 0, 0.9, 0) -- Vị trí góc dưới bên trái
+ToggleButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+ToggleButton.TextColor3 = Color3.new(1, 1, 1) -- Màu trắng
+ToggleButton.Font = Enum.Font.SourceSansBold
+ToggleButton.TextSize = 20
+
+local UICorner = Instance.new("UICorner")
+UICorner.Parent = ToggleButton
+
+ToggleButton.Parent = CoreGui -- Đảm bảo nút được đặt trong CoreGui
+
+-- Xử lý sự kiện khi nhấn nút
+ToggleButton.MouseButton1Click:Connect(function()
+    Rayfield:Toggle() -- Dùng hàm Toggle của Rayfield để ẩn/hiện menu
+end)
+
+-- Thông báo về cách sử dụng
 if IsMobile then
-    -- Nếu là thiết bị di động, tạo một nút bấm trong CoreGui
-    local CoreGui = game:GetService("CoreGui")
-    local ToggleButton = Instance.new("TextButton")
-
-    ToggleButton.Name = "OreoHub_Toggle_Mobile"
-    ToggleButton.Text = "Oreo"
-    ToggleButton.Size = UDim2.new(0, 80, 0, 40)
-    ToggleButton.Position = UDim2.new(0.01, 0, 0.9, 0) -- Vị trí góc dưới bên trái
-    ToggleButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    ToggleButton.TextColor3 = Color3.new(1, 1, 1) -- Màu trắng
-    ToggleButton.Font = Enum.Font.SourceSans
-    ToggleButton.TextSize = 20
-    
-    local UICorner = Instance.new("UICorner")
-    UICorner.Parent = ToggleButton
-
-    ToggleButton.Parent = CoreGui
-    
-    -- Xử lý sự kiện khi nhấn nút
-    ToggleButton.MouseButton1Click:Connect(function()
-        Rayfield:Toggle()
-    end)
-
     Rayfield:Notify({
         Title = "Chào mừng!",
         Content = "Sử dụng nút 'Oreo' ở góc dưới bên trái để Tắt/Mở menu.",
@@ -88,10 +92,9 @@ if IsMobile then
         Button1 = {Name = "OK"}
     })
 else
-    -- Nếu là PC, giữ nguyên thông báo cũ
     Rayfield:Notify({
         Title = "Chào mừng!",
-        Content = "Nhấn phím 'End' để Tắt/Mở menu.",
+        Content = "Nhấn phím 'End' HOẶC nút 'Oreo' để Tắt/Mở menu.",
         Duration = 8,
         Button1 = {Name = "OK"}
     })
@@ -111,14 +114,12 @@ local function createButton(tab, name, scriptUrl)
                 Content = "Đang thực thi: " .. name,
                 Duration = 3
             })
-            -- Thực thi script (đã bỏ tham số 'true' trong game:HttpGet để tương thích hơn với một số executor mobile)
             loadstring(game:HttpGet(scriptUrl))()
         end
     })
 end
 
 local T = {} -- Bảng chứa các tab
--- Khởi tạo 16 tab (từ Tab 0 đến Tab 15)
 T[0] = Window:CreateTab("tiktok profile")
 T[1] = Window:CreateTab("FunkyFriday")
 T[2] = Window:CreateTab("Grow a Garden")
