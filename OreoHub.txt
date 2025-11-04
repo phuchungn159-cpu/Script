@@ -1,0 +1,386 @@
+-- 1️⃣ KHAI BÁO KEY & LINK GET KEY
+local key = "OreoHubAllScript" -- Key bạn đặt
+local keyLink = "https://www.tiktok.com/@riz_god_2?_r=1&_t=ZS-915qpmIi0ZM" -- Link khi ấn "Get Key"
+
+-- 2️⃣ GIAO DIỆN NHẬP KEY
+local CoreGui = game:GetService("CoreGui")
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextBox = Instance.new("TextBox")
+local CheckButton = Instance.new("TextButton")
+local GetKeyButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+
+ScreenGui.Name = "KeySystem"
+ScreenGui.Parent = CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Frame.Size = UDim2.new(0, 300, 0, 160)
+Frame.Position = UDim2.new(0.5, -150, 0.5, -80)
+UICorner.Parent = Frame
+
+-- 🔴 Nút thoát (dấu X)
+local CloseButton = Instance.new("TextButton")
+CloseButton.Parent = Frame
+CloseButton.Text = "X"
+CloseButton.Size = UDim2.new(0, 25, 0, 25)
+CloseButton.Position = UDim2.new(1, -30, 0, 5) -- góc phải trên khung
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
+CloseButton.TextColor3 = Color3.fromRGB(255,255,255)
+CloseButton.Font = Enum.Font.SourceSansBold
+CloseButton.TextSize = 18
+
+local closeCorner = Instance.new("UICorner", CloseButton)
+closeCorner.CornerRadius = UDim.new(0, 5)
+
+CloseButton.MouseButton1Click:Connect(function()
+	ScreenGui:Destroy() -- ấn X sẽ tắt giao diện
+end)
+TextBox.Parent = Frame
+TextBox.PlaceholderText = "enter key here 🔥"
+TextBox.Text = ""
+TextBox.Size = UDim2.new(0.9, 0, 0, 35)
+TextBox.Position = UDim2.new(0.05, 0, 0.25, 0)
+TextBox.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+UICorner:Clone().Parent = TextBox
+
+CheckButton.Parent = Frame
+CheckButton.Text = "Check Key ✅"
+CheckButton.Size = UDim2.new(0.4, 0, 0, 30)
+CheckButton.Position = UDim2.new(0.05, 0, 0.65, 0)
+CheckButton.BackgroundColor3 = Color3.fromRGB(80, 170, 80)
+UICorner:Clone().Parent = CheckButton
+
+GetKeyButton.Parent = Frame
+GetKeyButton.Text = "Get Key 🔑"
+GetKeyButton.Size = UDim2.new(0.4, 0, 0, 30)
+GetKeyButton.Position = UDim2.new(0.55, 0, 0.65, 0)
+GetKeyButton.BackgroundColor3 = Color3.fromRGB(100, 100, 255)
+UICorner:Clone().Parent = GetKeyButton
+
+GetKeyButton.MouseButton1Click:Connect(function()
+	setclipboard(keyLink)
+	game.StarterGui:SetCore("SendNotification", {
+		Title = "Đã copy link 🔗";
+		Text = "key ở tiểu sử tik tok của mình nha!";
+		Duration = 4;
+	})
+end)
+
+local keyOk = false
+CheckButton.MouseButton1Click:Connect(function()
+	if TextBox.Text == key then
+		keyOk = true
+		ScreenGui:Destroy()
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "cảm ơn ông cháu 🎉";
+			Text = "Key đúng! Script sẽ khởi chạy.";
+			Duration = 3;
+		})
+	else
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "Sai key rồi cụ❌";
+			Text = "Hãy ấn nút 'Lấy key' để lấy key mới.";
+			Duration = 3;
+		})
+	end
+end)
+
+-- 3️⃣ CHỜ NHẬP KEY ĐÚNG MỚI CHẠY SCRIPT CHÍNH
+repeat task.wait() until keyOk == true
+
+-- 👉 DÁN CODE CHÍNH CỦA BẠN NGAY DƯỚI DÒNG NÀY 👇
+------------------------------------------------------
+-- ↓ TOÀN BỘ CODE CỦA BẠN (bắt đầu từ dòng: local ScreenGui = Instance.new("ScreenGui"))
+-- ✅ MẪU CHUẨN CHO NGƯỜI MỚI | TÉO HUB 🍎
+-- Giữ nguyên giao diện thật, chỉ thêm hướng dẫn 👈 ngay bên cạnh dòng cần sửa
+
+repeat task.wait() until game:IsLoaded()
+
+-- 🟢 Nút mở menu chính
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
+ImageButton.Size = UDim2.new(0, 40, 0, 40)
+ImageButton.Draggable = true
+ImageButton.Image = "http://www.roblox.com/asset/?id=93558917344609"  -- 👈 đổi ID ảnh nút mở menu tại đây (ảnh roblox)
+
+UICorner.CornerRadius = UDim.new(1, 10)
+UICorner.Parent = ImageButton
+
+ImageButton.MouseButton1Down:Connect(function()
+	game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.End, false, game)
+end)
+
+-- 🟣 Giao diện Fluent
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+repeat wait() until game:IsLoaded()
+
+-- 🪟 Cửa sổ chính
+local Window = Fluent:CreateWindow({
+	Title = "OreoHub V1.1.0 🥶",         -- 👈 đổi thành tên script của bạn
+	SubTitle = "By Hung🇻🇳",              -- 👈 đổi mô tả phụ
+	TabWidth = 157,
+	Size = UDim2.fromOffset(450, 300),
+	Acrylic = true,
+	Theme = "Aqua",                   -- 👈 đổi màu chủ đạo: Amethyst, Dark, Aqua, Light,...
+	MinimizeKey = Enum.KeyCode.End
+})
+
+-- 📑 Các tab (mục chính)
+local Tabs = {
+	Main0 = Window:AddTab({ Title = "tiktok profile" }),  -- 👈 đổi tên tab 1
+	Main1 = Window:AddTab({ Title = "FunkyFriday" }),  -- 👈 đổi tên tab 2
+	Main2 = Window:AddTab({ Title = "Grow a Garden" }),     -- 👈 đổi tên tab 3
+	Main3 = Window:AddTab({ Title = "aimbot" }),        -- 👈 đổi tên tab 4
+	Main4 = Window:AddTab({ Title = "dahood" }),    -- 👈 đổi tên tab 5
+	Main5 = Window:AddTab({ Title = "BloxFruit" }), -- 👈 đổi tên tab 6
+	Main6 = Window:AddTab({ Title = "kinglegacy" }), -- 👈 đổi tên tab 7
+	Main7 = Window:AddTab({ Title = "Plant vs Brainrot" }), -- 👈 đổi tên tab 8
+	Main8 = Window:AddTab({ Title = "TSB" }), -- 👈 đổi tên tab 9
+	Main9 = Window:AddTab({ Title = "LumBerTC2" }), -- 👈 đổi tên tab 10
+	Main10 = Window:AddTab({ Title = "Raise animal" }), -- 👈 đổi tên tab 11
+	Main11 = Window:AddTab({ Title = "Tsb all script" }), -- 👈 đổi tên tab 12
+	Main12 = Window:AddTab({ Title = "infinite Yield" }), -- 👈 đổi tên tab 13
+	Main13 = Window:AddTab({ Title = "MM2Script" }), -- 👈 đổi tên tab 14
+	Main14 = Window:AddTab({ Title = "inkgame" }), -- 👈 đổi tên tab 15
+	Main15 = Window:AddTab({ Title = "shinobi life" }), -- 👈 đổi tên tab 16
+}
+
+------------------------------------------------
+-- TAB 1: Các kênh tiktok
+------------------------------------------------
+Tabs.Main0:AddButton({
+	Title = "tiktok channel",              -- 👈 tên nút
+	Description = "emty",-- 👈 mô tả nút
+	Callback = function()
+		setclipboard("tiktok.com/@riz_god_2")  -- 👈 link sao chép
+	end
+})
+
+Tabs.Main0:AddButton({
+	Title = "tik",
+	Description = "làm chơi thui",
+	Callback = function()
+		setclipboard("tiktok.com/@riz_god_2")     -- 👈 link khác
+	end
+})
+
+Tabs.Main0:AddButton({
+	Title = "tiktok",
+	Description = "fl tiktok để biết thêm nhiều script",
+	Callback = function()
+		setclipboard("https://www.tiktok.com/@b.yt03?_t=ZS-90QsHmSjaiu&_r=1")
+	end
+})
+
+------------------------------------------------
+-- TAB 2: Ví dụ thêm script
+------------------------------------------------
+Tabs.Main1:AddButton({
+	Title = "FunkyFriday",                             -- 👈 tên nút hiển thị
+	Description = "script full chức năng",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		--Published on https://ahmedmode.com
+--Credits goes to the devs!
+--Scripts Below:
+--Script
+loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Fire-Hub/main/Loader"))()
+	end
+})
+
+Tabs.Main2:AddButton({
+	Title = "SpeedHub",                             -- 👈 tên nút hiển thị
+	Description = "script full chức năng",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+	end
+})
+
+Tabs.Main3:AddButton({
+	Title = "AimbotScript",                             -- 👈 tên nút hiển thị
+	Description = "Aimbot mọi game",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/yzeedw/Mortalv2-main/main/UNIVERSAL%20AIMBOT"))()
+	end
+})
+
+Tabs.Main4:AddButton({
+	Title = "palsm tech",                             -- 👈 tên nút hiển thị
+	Description = "Aimbot,esp,walkSpeed",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/shakar60/scripts/refs/heads/main/psalms",true))()
+	end
+})
+
+Tabs.Main5:AddButton({
+	Title = "QuantumHub",                             -- 👈 tên nút hiển thị
+	Description = "script full chức năng,farm kẹo",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))()
+	end
+})
+
+
+Tabs.Main6:AddButton({
+	Title = "OmgHub",                             -- 👈 tên nút hiển thị
+	Description = "Auto farm lv,auto săn sea,auto farm item",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))()
+	end
+})
+
+Tabs.Main7:AddButton({
+	Title = "speedHubtest",                             -- 👈 tên nút hiển thị
+	Description = "testscript",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+	end
+})
+
+Tabs.Main8:AddButton({
+	Title = "Tsbscript",                             -- 👈 tên nút hiển thị
+	Description = "auto combo maru",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-Yqantg-51718"))()
+	end
+})
+
+Tabs.Main9:AddButton({
+	Title = "DevKronhub",                             -- 👈 tên nút hiển thị
+	Description = "dupe rìu,free slot,inf jump",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/DevKron/Kron_Hub/refs/heads/main/version_1.0'))("")
+	end
+})
+
+Tabs.Main10:AddButton({
+	Title = "JinxScript",                             -- 👈 tên nút hiển thị
+	Description = "auto né,auto đổi animal,tự động mua,antiafk",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/stormskmonkey/JinkX/main/Loader.lua"))()
+	end
+})
+
+Tabs.Main11:AddButton({
+	Title = "MinhNhatHub",                             -- 👈 tên nút hiển thị
+	Description = "all script tbs",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/minhnhatdepzai8-cloud/TONG-HOP-SCRIPT/refs/heads/main/TSB"))()
+	end
+})
+
+Tabs.Main12:AddButton({
+	Title = "infinite yield",                             -- 👈 tên nút hiển thị
+	Description = "ex: fly,noclip,ws,bang,jerk,sit...",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+	end
+})
+
+Tabs.Main13:AddButton({
+	Title = "OverDriveHub",                             -- 👈 tên nút hiển thị
+	Description = "auto kill muder,kill aura,esp sheriff",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://api.overdrivehub.xyz/v1/auth"))()
+	end
+})
+
+Tabs.Main14:AddButton({
+	Title = "inkgamescript",                             -- 👈 tên nút hiển thị
+	Description = "auto play",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/omaromar242/Ink-Game-omar/refs/heads/main/.gitignore"))()
+	end
+})
+
+Tabs.Main15:AddButton({
+	Title = "solixhub",                             -- 👈 tên nút hiển thị
+	Description = "auto farm",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/refs/heads/main/solix%20new%20keyui.lua"))() 
+	end
+})
+
+Tabs.Main5:AddButton({
+	Title = "W Azura",                             -- 👈 tên nút hiển thị
+	Description = "farm sea",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/85e904ae1ff30824c1aa007fc7324f8f.lua"))()
+	end
+})
