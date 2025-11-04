@@ -1,6 +1,6 @@
 -- 1️⃣ KHAI BÁO KEY & LINK GET KEY
 local key = "OreoHubAllScript" -- Key bạn đặt
-local keyLink = "https://www.tiktok.com/@riz_god_2?_r=1&_t=ZS-915qpmIi0ZM" -- Link khi ấn "Get Key"
+local keyLink = "https://anotepad.com/notes/63wig4bi" -- Link khi ấn "Get Key"
 
 -- 2️⃣ GIAO DIỆN NHẬP KEY
 local CoreGui = game:GetService("CoreGui")
@@ -65,7 +65,7 @@ GetKeyButton.MouseButton1Click:Connect(function()
 	setclipboard(keyLink)
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Đã copy link 🔗";
-		Text = "key ở tiểu sử tik tok của mình nha!";
+		Text = "nhập link vào trình duyệt!";
 		Duration = 4;
 	})
 end)
