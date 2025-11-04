@@ -1,5 +1,5 @@
 -- ===================================================================
--- ==           OREOHUB V1.1.0 - ĐIỀU CHỈNH NÚT ẢO LUÔN HIỆN        ==
+-- ==           OREOHUB V1.1.0 - MENU LUÔN HIỂN THỊ (RAYFIELD)     ==
 -- ===================================================================
 
 -- 1. TẢI THƯ VIỆN RAYFIELD
@@ -9,9 +9,6 @@ local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 local KEY_LINK = "https://anotepad.com/notes/63wig4bi"
 local KEY_VALUE = "OreoHubAllScript"
 local UserInputService = game:GetService("UserInputService")
-
--- Chúng ta sẽ không phụ thuộc vào việc phát hiện Mobile nữa.
--- Thay vào đó, chúng ta sẽ tạo nút ảo MẶC ĐỊNH và chỉ dùng phím nóng cho PC.
 local IsMobile = UserInputService.TouchEnabled and not UserInputService.MouseEnabled
 
 -- ===================================================================
@@ -21,6 +18,10 @@ local Window = Rayfield:CreateWindow({
     Name = "OreoHub V1.1.0 🥶",
     LoadingTitle = "Đang tải OreoHub...",
     LoadingSubtitle = "By Hung🇻🇳",
+    
+    -- THAY ĐỔI QUAN TRỌNG: Đặt AutoShow thành TRUE
+    AutoShow = true, -- <--- Đảm bảo menu luôn hiện sau khi tải/nhập key
+    
     ConfigurationSaving = {
         Enabled = true,
         FileName = "OreoHubConfig"
@@ -57,7 +58,7 @@ local Window = Rayfield:CreateWindow({
 })
 
 -- ===================================================================
--- 3. ĐẢM BẢO TẠO NÚT BẬT/TẮT ẢO CHO MỌI TRƯỜNG HỢP MOBILE/EXECUTER
+-- 3. ĐẢM BẢO TẠO NÚT BẬT/TẮT ẢO
 -- ===================================================================
 
 -- Tạo nút ảo (Phím ảo) trong CoreGui
@@ -86,15 +87,15 @@ end)
 -- Thông báo về cách sử dụng
 if IsMobile then
     Rayfield:Notify({
-        Title = "Chào mừng!",
-        Content = "Sử dụng nút 'Oreo' ở góc dưới bên trái để Tắt/Mở menu.",
+        Title = "Menu đã sẵn sàng",
+        Content = "Menu đang hiện. Sử dụng nút 'Oreo' để ẩn/hiện.",
         Duration = 8,
         Button1 = {Name = "OK"}
     })
 else
     Rayfield:Notify({
-        Title = "Chào mừng!",
-        Content = "Nhấn phím 'End' HOẶC nút 'Oreo' để Tắt/Mở menu.",
+        Title = "Menu đã sẵn sàng",
+        Content = "Menu đang hiện. Nhấn phím 'End' HOẶC nút 'Oreo' để ẩn/hiện.",
         Duration = 8,
         Button1 = {Name = "OK"}
     })
