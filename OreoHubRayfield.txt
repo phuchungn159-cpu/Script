@@ -1,0 +1,173 @@
+-- ===================================================================
+-- ==           OREOHUB V1.1.0 - ĐÃ CHUYỂN SANG RAYFIELD           ==
+-- ==                         SẴN SÀNG ĐƯA LÊN GITHUB                 ==
+-- ===================================================================
+
+-- 1. TẢI THƯ VIỆN RAYFIELD
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+
+-- Link Get Key từ code gốc
+local KEY_LINK = "https://anotepad.com/notes/63wig4bi"
+-- Key từ code gốc
+local KEY_VALUE = "OreoHubAllScript"
+
+-- ===================================================================
+-- 2. TẠO CỬA SỔ CHÍNH (WINDOW)
+-- ===================================================================
+local Window = Rayfield:CreateWindow({
+    Name = "OreoHub V1.1.0 🥶",
+    LoadingTitle = "Đang tải OreoHub...",
+    LoadingSubtitle = "By Hung🇻🇳",
+    ConfigurationSaving = {
+        Enabled = true,
+        FileName = "OreoHubConfig"
+    },
+    ToggleKey = Enum.KeyCode.End, -- Phím End để đóng/mở menu
+
+    -------------------------------------------------------------------
+    -- HỆ THỐNG KEY
+    -------------------------------------------------------------------
+    KeySystem = {
+        Enabled = true,
+        Title = "Xác Thực OreoHub",
+        Subtitle = "Vui lòng nhập Key để sử dụng",
+        Note = "Key mẫu: " .. KEY_VALUE,
+        SaveKey = true,
+        Key = KEY_VALUE,
+        
+        Buttons = {
+            {
+                Name = "Get Key 🔑",
+                Callback = function()
+                    setclipboard(KEY_LINK)
+                    Rayfield:Notify({
+                        Title = "Đã copy link 🔗",
+                        Content = "Đã copy link lấy key vào clipboard. Nhập vào trình duyệt!",
+                        Duration = 5,
+                        Button1 = {Name = "OK"}
+                    })
+                end
+            }
+        }
+    }
+})
+
+-- Thông báo ban đầu
+Rayfield:Notify({
+    Title = "Chào mừng!",
+    Content = "Nhấn phím 'End' để Tắt/Mở menu.",
+    Duration = 8,
+    Button1 = {Name = "OK"}
+})
+
+-- Hàm tạo các nút bấm (cho gọn code)
+local function createButton(tab, name, scriptUrl)
+    tab:CreateButton({
+        Name = name,
+        Callback = function()
+            -- Gửi thông báo trước khi chạy loadstring
+            Rayfield:Notify({
+                Title = "Đang tải Script...",
+                Content = "Đang thực thi: " .. name,
+                Duration = 3
+            })
+            
+            -- Thực thi script
+            loadstring(game:HttpGet(scriptUrl, true))()
+        end
+    })
+end
+
+-- ===================================================================
+-- 3. TẠO TẤT CẢ CÁC TAB VÀ NÚT BẤM
+-- ===================================================================
+
+local T = {} -- Bảng chứa các tab
+-- Khởi tạo 16 tab (từ Tab 0 đến Tab 15)
+T[0] = Window:CreateTab("tiktok profile")
+T[1] = Window:CreateTab("FunkyFriday")
+T[2] = Window:CreateTab("Grow a Garden")
+T[3] = Window:CreateTab("aimbot")
+T[4] = Window:CreateTab("dahood")
+T[5] = Window:CreateTab("BloxFruit")
+T[6] = Window:CreateTab("kinglegacy")
+T[7] = Window:CreateTab("Plant vs Brainrot")
+T[8] = Window:CreateTab("TSB")
+T[9] = Window:CreateTab("LumBerTC2")
+T[10] = Window:CreateTab("Raise animal")
+T[11] = Window:CreateTab("Tsb all script")
+T[12] = Window:CreateTab("infinite Yield")
+T[13] = Window:CreateTab("MM2Script")
+T[14] = Window:CreateTab("inkgame")
+T[15] = Window:CreateTab("shinobi life")
+
+-- Thêm các nút bấm
+
+-- tiktok profile
+T[0]:CreateSection("Links")
+T[0]:CreateButton({Name = "tiktok channel (1)", Callback = function() setclipboard("tiktok.com/@riz_god_2") end})
+T[0]:CreateButton({Name = "tiktok channel (2)", Callback = function() setclipboard("tiktok.com/@riz_god_2") end})
+T[0]:CreateButton({Name = "tiktok (3)", Callback = function() setclipboard("https://www.tiktok.com/@b.yt03?_t=ZS-90QsHmSjaiu&_r=1") end})
+
+-- FunkyFriday
+T[1]:CreateSection("Fire-Hub")
+createButton(T[1], "FunkyFriday Script", "https://raw.githubusercontent.com/InfernusScripts/Fire-Hub/main/Loader")
+
+-- Grow a Garden
+T[2]:CreateSection("Speed-Hub-X")
+createButton(T[2], "SpeedHub", "https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua")
+
+-- aimbot
+T[3]:CreateSection("Universal Aimbot")
+createButton(T[3], "AimbotScript", "https://raw.githubusercontent.com/yzeedw/Mortalv2-main/main/UNIVERSAL%20AIMBOT")
+
+-- dahood
+T[4]:CreateSection("Psalms Tech")
+createButton(T[4], "palsm tech", "https://raw.githubusercontent.com/shakar60/scripts/refs/heads/main/psalms")
+
+-- BloxFruit
+T[5]:CreateSection("Script Loaders")
+createButton(T[5], "QuantumHub", "https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua")
+createButton(T[5], "W Azura", "https://api.luarmor.net/files/v3/loaders/85e904ae1ff30824c1aa007fc7324f8f.lua")
+
+-- kinglegacy
+T[6]:CreateSection("OmgHub")
+createButton(T[6], "OmgHub", "https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua")
+
+-- Plant vs Brainrot
+T[7]:CreateSection("SpeedHub Test")
+createButton(T[7], "speedHubtest", "https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua")
+
+-- TSB
+T[8]:CreateSection("Script Loaders")
+createButton(T[8], "Tsbscript", "https://rawscripts.net/raw/The-Strongest-Battlegrounds-Yqantg-51718")
+
+-- LumBerTC2
+T[9]:CreateSection("DevKronhub")
+createButton(T[9], "DevKronhub", "https://raw.githubusercontent.com/DevKron/Kron_Hub/refs/heads/main/version_1.0")
+
+-- Raise animal
+T[10]:CreateSection("JinxScript")
+createButton(T[10], "JinxScript", "https://raw.githubusercontent.com/stormskmonkey/JinkX/main/Loader.lua")
+
+-- Tsb all script
+T[11]:CreateSection("MinhNhatHub")
+createButton(T[11], "MinhNhatHub", "https://raw.githubusercontent.com/minhnhatdepzai8-cloud/TONG-HOP-SCRIPT/refs/heads/main/TSB")
+
+-- infinite Yield
+T[12]:CreateSection("Admin Commands")
+createButton(T[12], "infinite yield", "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source")
+
+-- MM2Script
+T[13]:CreateSection("OverDriveHub")
+createButton(T[13], "OverDriveHub", "https://api.overdrivehub.xyz/v1/auth")
+
+-- inkgame
+T[14]:CreateSection("Ink Game Script")
+createButton(T[14], "inkgamescript", "https://raw.githubusercontent.com/omaromar242/Ink-Game-omar/refs/heads/main/.gitignore")
+
+-- shinobi life
+T[15]:CreateSection("Solix Hub")
+createButton(T[15], "solixhub", "https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/refs/heads/main/solix%20new%20keyui.lua")
+
+print("OreoHub (Rayfield version) đã tải thành công!")
