@@ -1,15 +1,15 @@
 -- ===================================================================
--- ==           OREOHUB V1.1.0 - ĐÃ CHUYỂN SANG RAYFIELD           ==
--- ==                         SẴN SÀNG ĐƯA LÊN GITHUB                 ==
+-- ==           OREOHUB V1.1.0 - TỐI ƯU CHO MOBILE (RAYFIELD)      ==
 -- ===================================================================
 
 -- 1. TẢI THƯ VIỆN RAYFIELD
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
--- Link Get Key từ code gốc
+-- CÁC HẰNG SỐ CƠ BẢN
 local KEY_LINK = "https://anotepad.com/notes/63wig4bi"
--- Key từ code gốc
 local KEY_VALUE = "OreoHubAllScript"
+local UserInputService = game:GetService("UserInputService")
+local IsMobile = UserInputService.TouchEnabled and not UserInputService.MouseEnabled
 
 -- ===================================================================
 -- 2. TẠO CỬA SỔ CHÍNH (WINDOW)
@@ -22,7 +22,8 @@ local Window = Rayfield:CreateWindow({
         Enabled = true,
         FileName = "OreoHubConfig"
     },
-    ToggleKey = Enum.KeyCode.End, -- Phím End để đóng/mở menu
+    -- Chỉ sử dụng phím End nếu không phải là Mobile
+    ToggleKey = IsMobile and nil or Enum.KeyCode.End, 
 
     -------------------------------------------------------------------
     -- HỆ THỐNG KEY
@@ -52,35 +53,69 @@ local Window = Rayfield:CreateWindow({
     }
 })
 
--- Thông báo ban đầu
-Rayfield:Notify({
-    Title = "Chào mừng!",
-    Content = "Nhấn phím 'End' để Tắt/Mở menu.",
-    Duration = 8,
-    Button1 = {Name = "OK"}
-})
+-- ===================================================================
+-- 3. NÚT BẬT/TẮT CHO THIẾT BỊ DI ĐỘNG
+-- ===================================================================
+
+if IsMobile then
+    -- Nếu là thiết bị di động, tạo một nút bấm trong CoreGui
+    local CoreGui = game:GetService("CoreGui")
+    local ToggleButton = Instance.new("TextButton")
+
+    ToggleButton.Name = "OreoHub_Toggle_Mobile"
+    ToggleButton.Text = "Oreo"
+    ToggleButton.Size = UDim2.new(0, 80, 0, 40)
+    ToggleButton.Position = UDim2.new(0.01, 0, 0.9, 0) -- Vị trí góc dưới bên trái
+    ToggleButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    ToggleButton.TextColor3 = Color3.new(1, 1, 1) -- Màu trắng
+    ToggleButton.Font = Enum.Font.SourceSans
+    ToggleButton.TextSize = 20
+    
+    local UICorner = Instance.new("UICorner")
+    UICorner.Parent = ToggleButton
+
+    ToggleButton.Parent = CoreGui
+    
+    -- Xử lý sự kiện khi nhấn nút
+    ToggleButton.MouseButton1Click:Connect(function()
+        Rayfield:Toggle()
+    end)
+
+    Rayfield:Notify({
+        Title = "Chào mừng!",
+        Content = "Sử dụng nút 'Oreo' ở góc dưới bên trái để Tắt/Mở menu.",
+        Duration = 8,
+        Button1 = {Name = "OK"}
+    })
+else
+    -- Nếu là PC, giữ nguyên thông báo cũ
+    Rayfield:Notify({
+        Title = "Chào mừng!",
+        Content = "Nhấn phím 'End' để Tắt/Mở menu.",
+        Duration = 8,
+        Button1 = {Name = "OK"}
+    })
+end
+
+-- ===================================================================
+-- 4. TẠO TẤT CẢ CÁC TAB VÀ NÚT BẤM (GIỮ NGUYÊN)
+-- ===================================================================
 
 -- Hàm tạo các nút bấm (cho gọn code)
 local function createButton(tab, name, scriptUrl)
     tab:CreateButton({
         Name = name,
         Callback = function()
-            -- Gửi thông báo trước khi chạy loadstring
             Rayfield:Notify({
                 Title = "Đang tải Script...",
                 Content = "Đang thực thi: " .. name,
                 Duration = 3
             })
-            
-            -- Thực thi script
-            loadstring(game:HttpGet(scriptUrl, true))()
+            -- Thực thi script (đã bỏ tham số 'true' trong game:HttpGet để tương thích hơn với một số executor mobile)
+            loadstring(game:HttpGet(scriptUrl))()
         end
     })
 end
-
--- ===================================================================
--- 3. TẠO TẤT CẢ CÁC TAB VÀ NÚT BẤM
--- ===================================================================
 
 local T = {} -- Bảng chứa các tab
 -- Khởi tạo 16 tab (từ Tab 0 đến Tab 15)
